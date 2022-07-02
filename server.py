@@ -1,6 +1,6 @@
-# Importing the relevant libraries
 import websockets
 import asyncio
+
 
 PORT = 3000
 
@@ -8,10 +8,12 @@ print("Server listening on Port " + str(PORT))
 
 async def echo(websocket, path):
     print("A client just connected")
+
     try:
         async for message in websocket:
             print("Received message from client: " + message)
             await websocket.send("Pong: " + message)
+
     except websockets.exceptions.ConnectionClosed as e:
         print("A client just disconnected")
 
